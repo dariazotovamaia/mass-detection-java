@@ -1,0 +1,5 @@
+.idea
+target/**
+resources/**
+deeplearning4j-examples.iml
+MassDetection.log
