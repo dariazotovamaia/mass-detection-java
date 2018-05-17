@@ -37,11 +37,11 @@ import java.io.IOException;
 public class EditLastLayerOthersFrozen {
     private static final Logger log = org.slf4j.LoggerFactory.getLogger(EditLastLayerOthersFrozen.class);
 
-    protected static final int numClasses = 5;
-    protected static final long seed = 12345;
+    protected static final int numClasses = 2;
+    protected static final long seed = 42;
 
     private static final int trainPerc = 80;
-    private static final int batchSize = 15;
+    private static final int batchSize = 20;
     private static final String featureExtractionLayer = "fc2";
 
     public static void main(String [] args) throws UnsupportedKerasConfigurationException, IOException, InvalidKerasConfigurationException {
@@ -101,5 +101,7 @@ public class EditLastLayerOthersFrozen {
         }
 
         log.info("Model build complete");
+        
+        
     }
 }

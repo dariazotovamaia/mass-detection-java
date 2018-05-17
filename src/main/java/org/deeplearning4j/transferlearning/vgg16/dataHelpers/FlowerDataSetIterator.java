@@ -27,9 +27,9 @@ import java.util.Random;
 public class FlowerDataSetIterator {
     private static final Logger log = org.slf4j.LoggerFactory.getLogger(FlowerDataSetIterator.class);
 
-    private static final String DATA_DIR = new File(System.getProperty("user.home")) + "/dl4jDataDir";
+    private static final String DATA_DIR = new File(System.getProperty("user.home")) + "/project18/mass-detection-java";
     private static final String DATA_URL = "http://download.tensorflow.org/example_images/flower_photos.tgz";
-    private static final String FLOWER_DIR = DATA_DIR + "/flower_photos";
+    private static final String FLOWER_DIR = DATA_DIR + "/dataset";
 
     private static final String [] allowedExtensions = BaseImageLoader.ALLOWED_FORMATS;
     private static final Random rng  = new Random(13);
@@ -37,7 +37,7 @@ public class FlowerDataSetIterator {
     private static final int height = 224;
     private static final int width = 224;
     private static final int channels = 3;
-    private static final int numClasses = 5;
+    private static final int numClasses = 2;
 
     private static ParentPathLabelGenerator labelMaker = new ParentPathLabelGenerator();
     private static InputSplit trainData,testData;
@@ -54,12 +54,12 @@ public class FlowerDataSetIterator {
     }
 
     public static void setup(int batchSizeArg, int trainPerc) throws IOException {
-        try {
+        /*try {
             downloadAndUntar();
         } catch (IOException e) {
             e.printStackTrace();
             log.error("IOException : ", e);
-        }
+        }*/
         batchSize = batchSizeArg;
         File parentDir = new File(FLOWER_DIR);
         FileSplit filesInDir = new FileSplit(parentDir, allowedExtensions, rng);

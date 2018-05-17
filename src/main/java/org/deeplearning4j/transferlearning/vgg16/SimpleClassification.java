@@ -51,10 +51,10 @@ import static java.lang.Math.toIntExact;
 
 public class SimpleClassification {
     protected static final Logger log = LoggerFactory.getLogger(SimpleClassification.class);
-    protected static int height = 100;
-    protected static int width = 100;
+    protected static int height = 454;
+    protected static int width = 454;
     protected static int channels = 3;
-    protected static int batchSize = 20;
+    protected static int batchSize = 15;
 
     protected static long seed = 42;
     protected static Random rng = new Random(seed);
@@ -75,7 +75,7 @@ public class SimpleClassification {
          *  - pathFilter = define additional file load filter to limit size and balance batch content
          **/
         ParentPathLabelGenerator labelMaker = new ParentPathLabelGenerator();
-        File mainPath = new File(System.getProperty("user.dir"), "deploy/mass_dataset/");
+        File mainPath = new File(System.getProperty("user.home"), "/project18/mass-detection-java/dataset");
         FileSplit fileSplit = new FileSplit(mainPath, NativeImageLoader.ALLOWED_FORMATS, rng);
         int numExamples = toIntExact(fileSplit.length());
         numLabels = fileSplit.getRootDir().listFiles(File::isDirectory).length; //This only works if your root is clean: only label subdirs.
@@ -126,10 +126,10 @@ public class SimpleClassification {
         }
         network.init();
         // network.setListeners(new ScoreIterationListener(listenerFreq));
-        UIServer uiServer = UIServer.getInstance();
-        StatsStorage statsStorage = new InMemoryStatsStorage();
-        uiServer.attach(statsStorage);
-        network.setListeners(new StatsListener( statsStorage),new ScoreIterationListener(1));
+        //UIServer uiServer = UIServer.getInstance();
+        //StatsStorage statsStorage = new InMemoryStatsStorage();
+        //uiServer.attach(statsStorage);
+        //network.setListeners(new StatsListener( statsStorage),new ScoreIterationListener(1));
         /**
          * Data Setup -> define how to load data into net:
          *  - recordReader = the reader that loads and converts image data pass in inputSplit to initialize
